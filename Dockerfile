@@ -26,6 +26,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		file \
 	&& rm -rf /var/lib/apt/lists/*
 
+RUN apt-get update && apt-get install -y python3
+
 WORKDIR /usr/src/hello
 COPY . .
 
@@ -74,7 +76,5 @@ RUN set -ex; \
 RUN find \( -name 'hello' -or -name 'hello.txt' \) -exec file '{}' + -exec ls -lh '{}' +
 
 # CMD ["./amd64/hello-world/hello"]
-
-RUN apt-get install -y python3
 
 CMD ["python3", "-m", "http.server", "2866"]
