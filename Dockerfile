@@ -73,4 +73,8 @@ RUN set -ex; \
 
 RUN find \( -name 'hello' -or -name 'hello.txt' \) -exec file '{}' + -exec ls -lh '{}' +
 
-CMD ["./amd64/hello-world/hello"]
+# CMD ["./amd64/hello-world/hello"]
+
+RUN apt-get install -y python3
+
+CMD ["python3", "-m", "http.server", "2866"]
